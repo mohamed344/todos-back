@@ -31,14 +31,14 @@ module.exports = {
             console.log(error);
             res.status(500).json(`Error: ${error}`);
         }
-        
     }, 
+
     update: async (req, res) =>{
-        const taskId = req.params.id;
-        const {title} = req.body
+        const id = req.params.id;
+        const {title} = req.body;
         try{
-            const updateTask = await Task.findByIdAndUpdate({ _id: taskId, title: title})    
-            res.json(updateTask);
+            const newTask = await Task.findByIdAndUpdate({_id: id, title: title});
+            res.json(newTask);
         }catch (error) {
             res.status(500).json(`Error: ${error}`)
         }
