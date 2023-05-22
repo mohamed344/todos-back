@@ -1,28 +1,21 @@
 const router = require('express').Router();
+const TasksController = require('../controllers/tasksController')
 
 
-
-/* GET Todo Tasks page. */
-router.get('/',  (req, res) => {
-  const tasks = Task.find({}).then(() => {
-    if(error){
-      console.log(error);
-      }else{
-        res.json(tasks)
-    }
-  })
-});
+// GET Todo Tasks page. 
+router.get('/', TasksController.index);
     
 
-/* create Todo Task . */
-router.post('/create', async (req, res) => {
-  try{
-    const {title} = req.body;
-    const newTask = await Task({task: title}).save()
-    res.json(newTask)
-  }catch(error){
-    res.status(500).json(error)
-  }
-});
+// create Todo Task . 
+router.post('/create', TasksController.create);
+
+// show Task . 
+router.get('/show/:id', TasksController.show);
+
+// update Task .
+router.put('/update/:id', TasksController.update);
+
+// delete Task .
+router.delete('/delete/:id', TasksController.delete);
 
 module.exports = router;
