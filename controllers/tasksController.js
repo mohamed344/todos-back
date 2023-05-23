@@ -35,9 +35,9 @@ module.exports = {
 
     update: async (req, res) =>{
         const id = req.params.id;
-        const {title} = req.body;
+        const {title, completed} = req.body;
         try{
-            const newTask = await Task.findByIdAndUpdate({_id: id, title: title});
+            const newTask = await Task.findByIdAndUpdate(id, {title: title, completed: completed});
             res.json(newTask);
         }catch (error) {
             res.status(500).json(`Error: ${error}`)
