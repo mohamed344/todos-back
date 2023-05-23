@@ -31,13 +31,25 @@ module.exports = {
             console.log(error);
             res.status(500).json(`Error: ${error}`);
         }
+    },
+
+    edit: async (req, res) => {
+        const taskId = req.params.id;
+        try{
+            await Task.findById(taskId).then((task) => {
+                res.json(task)
+            })
+        }catch (error){
+            console.log(error);
+            res.status(500).json(`Error: ${error}`);
+        }
     }, 
 
     update: async (req, res) =>{
         const id = req.params.id;
-        const {title, completed} = req.body;
+        const {title} = req.body;
         try{
-            const newTask = await Task.findByIdAndUpdate(id, {title: title, completed: completed});
+            const newTask = await Task.findByIdAndUpdate(id, {title: title});
             res.json(newTask);
         }catch (error) {
             res.status(500).json(`Error: ${error}`)

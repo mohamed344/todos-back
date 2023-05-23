@@ -12,6 +12,9 @@ router.post('/create', TasksController.create);
 // show Task . 
 router.get('/show/:id', TasksController.show);
 
+// edit Task . 
+router.get('/edit/:id', TasksController.edit);
+
 // update Task .
 router.put('/update/:id', TasksController.update);
 
