@@ -9,7 +9,7 @@ module.exports = {
         console.log(error);
         res.status(500).json('Something went wrong');
       }
-    }, 
+    },
 
     create: async (req, res) => {
         const { title } = req.body;
@@ -43,18 +43,19 @@ module.exports = {
             console.log(error);
             res.status(500).json(`Error: ${error}`);
         }
-    }, 
+    },
 
-    update: async (req, res) =>{
+    update: async (req, res) => {
         const id = req.params.id;
-        const {title} = req.body;
-        try{
-            const newTask = await Task.findByIdAndUpdate(id, {title: title});
-            res.json(newTask);
-        }catch (error) {
-            res.status(500).json(`Error: ${error}`)
+        const title = req.body;
+        try {
+          const updatedTodo = await Task.findByIdAndUpdate(id, title);
+          res.status(201).json(updatedTodo)
+        }catch(error){
+          console.log(error);
+          res.status(500).json(error)
         }
-    }, 
+      },
 
     delete: async (req, res) => {
         const taskId = req.params.id;

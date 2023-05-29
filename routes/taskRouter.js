@@ -2,17 +2,16 @@ const router = require('express').Router();
 const TasksController = require('../controllers/tasksController')
 
 
-// GET Todo Tasks page. 
+// GET Todo Tasks page.
 router.get('/', TasksController.index);
-    
 
-// create Todo Task . 
+// create Todo Task .
 router.post('/create', TasksController.create);
 
-// show Task . 
+// show Task .
 router.get('/show/:id', TasksController.show);
 
-// edit Task . 
+// edit Task .
 router.get('/edit/:id', TasksController.edit);
 
 // update Task .
