@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const TasksController = require('../controllers/tasksController')
-
+// const auth = require('../middlewares/auth')
 
 // GET Todo Tasks page.
 router.get('/', TasksController.index);
