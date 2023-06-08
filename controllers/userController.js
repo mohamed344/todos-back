@@ -23,7 +23,7 @@ const register = async (req, res) => {
     });
 
     // Token Generate
-    const token = jwt.sign({ email: result.email, id: result._id }, SECRET_KEY);
+    const token = jwt.sign({ email: result.email, id: result._id }, SECRET_KEY, { expiresIn: '1h' });
     res.status(201).json({ user: result, token: token });
   } catch (error) {
     console.log(error);
@@ -46,7 +46,7 @@ const login = async (req, res) => {
         // Token Generate
         const token = jwt.sign(
           { email: existingUser.email, id: existingUser._id, username: existingUser.username },
-          SECRET_KEY
+          SECRET_KEY, { expiresIn: '1h' }
         );
         res.status(201).json({
             user: existingUser,

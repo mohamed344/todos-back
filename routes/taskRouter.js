@@ -3,21 +3,18 @@ const TasksController = require('../controllers/tasksController')
 const auth = require('../middlewares/auth')
 
 // GET Todo Tasks page.
-router.get('/', auth, TasksController.getAllTasks);
-router.get('/tasks/:username', auth, TasksController.getTasks)
-// create Todo Task .
-router.post('/create',auth, TasksController.createTask);
+router.get('/', TasksController.getTasks);
 
-// show Task .
-router.get('/show/:id',auth, TasksController.showTask);
+// create Todo Task .
+router.post('/create', TasksController.createTask);
 
 // edit Task .
-router.patch('/edit/:id',auth, TasksController.editTask);
+router.put('/edit/:id', TasksController.editTask);
 
 // update Task .
-router.put('/update/:id',auth, TasksController.updateTask);
+router.put('/update/:id', TasksController.updateTask);
 
 // delete Task .
-router.delete('/delete/:id',auth, TasksController.deleteTask);
+router.delete('/delete/:id', TasksController.deleteTask);
 
 module.exports = router;
