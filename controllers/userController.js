@@ -35,7 +35,7 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     // existing user check
-    const existingUser = await users.findOne({ email: email }).populate('tasks');
+    const existingUser = await users.findOne({ email: email });
     if (existingUser) {
       // is password correct
       const isPasswordCorrect = await bcrypt.compare(

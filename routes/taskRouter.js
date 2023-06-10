@@ -3,10 +3,10 @@ const TasksController = require('../controllers/tasksController')
 const auth = require('../middlewares/auth')
 
 // GET Todo Tasks page.
-router.get('/', TasksController.getTasks);
+router.get('/', auth, TasksController.getTasks);
 
 // create Todo Task .
-router.post('/create', TasksController.createTask);
+router.post('/create',auth,  TasksController.createTask);
 
 // edit Task .
 router.put('/edit/:id', TasksController.editTask);

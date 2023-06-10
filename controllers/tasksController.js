@@ -5,7 +5,7 @@ module.exports = {
   getTasks: async (req, res, next) => {
     try {
         const userId = req.userId;
-        const tasks = await Task.find().populate('user');
+        const tasks = await Task.find({user: userId}).populate('user');
         res.status(200).json(tasks);
     } catch (error) {
         console.log(error);
