@@ -9,12 +9,12 @@ router.get('/', auth, TasksController.getTasks);
 router.post('/create',auth,  TasksController.createTask);
 
 // edit Task .
-router.put('/edit/:id',auth, TasksController.editTask);
+router.put('/edit/:id', TasksController.editTask);
 
 // update Task .
-router.put('/update/:id',auth, TasksController.updateTask);
+router.put('/update/:id', TasksController.updateTask);
 
 // delete Task .
-router.delete('/delete/:id',auth, TasksController.deleteTask);
+router.delete('/delete/:id', TasksController.deleteTask);
 
 module.exports = router;
