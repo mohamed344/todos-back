@@ -9,6 +9,7 @@ router.get('/', auth, TasksController.getTasks);
 router.post('/create',auth,  TasksController.createTask);
 
 // edit Task .
+router.get('/show/:id', TasksController.showTask);
 router.put('/edit/:id', TasksController.editTask);
 
 // update Task .

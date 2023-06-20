@@ -33,12 +33,22 @@ module.exports = {
         }
     },
 
+  showTask: async (req, res) => {
+      const id = req.params.id
+      try{
+        const showTask = await Task.findById(id);
+        res.status(201).json(showTask)
+      }catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+      }
+  },
+
   editTask: async (req, res) => {
     const id = req.params.id;
     const completed = req.body.completed;
-    const userId = req.userId
     try {
-        const updatedTask = await Task.findByIdAndUpdate(id, {user: userId, completed: completed }, { new: true });
+        const updatedTask = await Task.findByIdAndUpdate(id, {completed: completed }, { new: true });
             res.status(201).json(updatedTask)
     } catch (error) {
         console.log(error);
@@ -50,7 +60,7 @@ module.exports = {
     const id = req.params.id;
     const title = req.body.title;
     try {
-      const updatedTask = await Task.findByIdAndUpdate(id, { title: title }, { new: true });
+      const updatedTask = await Task.findByIdAndUpdate(id, { title: title });
       res.status(201).json(updatedTask);
     } catch (error) {
       console.log(error);
